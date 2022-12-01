@@ -1,0 +1,21 @@
+#include<cstring>
+void helper(char input[] , int start){
+    int n = strlen(input);
+    if(input[start]=='\0')
+        return;
+    if(input[start]=='x'){
+       for(int j = start+1; j <= n; j++) {
+                input[j - 1] = input[j];
+            }
+         helper(input, start);
+    }
+    else{
+        
+        helper(input, start+1);
+    }
+ }
+void removeX(char input[]) {
+    
+    helper( input , 0);
+    return;
+}
