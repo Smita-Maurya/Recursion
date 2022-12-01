@@ -1,0 +1,19 @@
+#include<cstring>
+
+bool helper(char input[],int start,int end){
+		if(end<=start){
+			return true;
+        }
+    
+        if(input[start]!=input[end]){
+			return false;
+        }
+    
+        return helper(input,start+1,end-1);
+}
+
+bool checkPalindrome(char input[]) {
+    
+    int len= strlen(input);
+    return helper(input,0,len-1);
+}
