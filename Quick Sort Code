@@ -1,0 +1,55 @@
+#include<iostream>
+#include<cstring>
+#include<cmath>
+using namespace std;
+int partition(int input[] ,int start , int end){
+    int x = input[start];
+    int count = 0;
+    for(int i =start +1; i<=end; i++ ){
+        if(input[i]<x){
+            count++;
+        }
+    }
+    
+    int xindex = start + count;
+    swap(input[xindex],input[start] );
+    
+    int i1=start ;
+    int j = end;
+    while(i1<xindex && j>xindex){
+        
+         
+        if(input[i1]>=input[xindex] && input[j]<input[xindex])
+        {
+            swap(input[i1],input[j]);
+            i1++;
+            j--;
+        }
+        if(input[i1]<input[xindex])i1++;
+        if(input[j]>=input[xindex])j--;
+        //return xindex;
+    }
+    return xindex ;
+    //partition(input+1 , start , end);
+    
+    
+}
+
+void helper(int input[] , int start , int end ){
+    if(start>=end){
+        return;
+    }
+    
+    int c= partition( input ,  start , end);
+    helper(input , start, c-1);
+    helper(input , c+1 , end);
+}
+void quickSort(int input[], int size) {
+    helper(input , 0 , size-1);
+  /* Don't write main().
+     Don't read input, it is passed as function argument.
+     Change in the given array itself.
+     Taking input and printing output is handled automatically.
+  */
+
+}
