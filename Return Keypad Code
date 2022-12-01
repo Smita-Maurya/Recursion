@@ -1,0 +1,32 @@
+#include <string>
+using namespace std;
+int keypadH(int num , string output[] , string options[]){
+    
+    if(num == 0){
+        output[0] = "";
+        return 1;
+    }
+    int lastDigit = num % 10;
+    num = num / 10 ;
+    int smallOutputSize = keypadH(num , output, options);
+   
+    string input;
+    input += options[lastDigit];
+    int ans_size = smallOutputSize * input.size() ;
+    string temp[ans_size];
+    int k = 0 ;
+    for(int i = 0 ; i < smallOutputSize ; i++){
+        for(int j = 0 ; j < input.size() ; j++){
+            temp[k++] = output[i] + input[j];
+        }
+    }
+    for(int i = 0 ; i < ans_size ; i++){
+        output[i] = temp[i];
+    }
+    //return input.size() * smallOutputSize;
+    return ans_size;
+}
+int keypad(int num, string output[]){
+   string options[] = {" ", " ", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    return keypadH(num , output , options);
+}
