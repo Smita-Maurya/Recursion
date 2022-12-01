@@ -1,0 +1,17 @@
+void printSubsetOfArray(int input[], int n,int ans[],int idx) {
+   if(n==0){
+       for(int i=0;i<idx;i++){
+           cout<<ans[i]<<" ";
+       }
+       cout<<endl;
+       return ;
+   }
+    printSubsetOfArray(input+1,n-1,ans,idx);
+  
+    ans[idx]=input[0];
+    printSubsetOfArray(input+1,n-1,ans,idx+1);
+}
+void printSubsetsOfArray(int input[], int size) {
+     int *output=new int[1000];
+    printSubsetOfArray(input,size,output,0);
+}
