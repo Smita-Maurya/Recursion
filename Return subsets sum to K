@@ -1,0 +1,38 @@
+int subsetSumToK(int input[], int n, int output[][50], int k) {
+    if(n==0){
+        if(k==0){
+            output[0][0] = 0;
+            return 1;
+        }
+        else{
+            return 0;
+        }
+        
+
+    }
+    int output1[1000][50];
+    int output2[1000][50];
+    int smallsubsetsum1 = subsetSumToK(input+1 , n-1 , output1 , k- input[0]);
+    int smallsubsetsum2 = subsetSumToK(input+1 , n-1 , output2, k);
+    
+    
+    for(int i=0; i<smallsubsetsum1; i++){
+        
+        for(int j =1;j<output1[i][0]+1;j++){
+output[i][j+1] = output1[i][j];
+            }
+        output[i][0] = output1[i][0]+1;
+        output[i][1] = input[0];
+    }
+
+    for (int i = 0; i < smallsubsetsum2; i++)
+    {
+        for (int j = 0; j <= output2[i][0]; j++)
+        {
+            output[i + smallsubsetsum1][j] = output2[i][j];
+        }
+    }
+    
+    return smallsubsetsum1 + smallsubsetsum2;
+
+}
