@@ -1,0 +1,29 @@
+ #include <string.h>
+using namespace std;
+ 
+void helper(string input , string output){
+    if(input.empty()){
+      //output[0]==" ";
+        cout<<output<<endl;
+        return;
+    }
+     char size1 = 'a'+(input[0]-'0')-1;
+        helper(input.substr(1),output+size1);
+    
+    char size2;
+    int firstname = 10*(input[0]-'0')+(input[1]-'0');
+    
+        if(firstname>=10 && firstname<=26){
+            size2 = 'a'+firstname -1;
+                helper(input.substr(2) , output+size2);
+           
+        }
+ }
+
+void printAllPossibleCodes(string input) {
+    string output="";
+    helper( input,  output);
+    /*
+    Given the input as a string, print all its possible combinations. You do not need to return anything.
+    */
+}
