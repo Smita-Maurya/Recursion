@@ -1,0 +1,8 @@
+int count(int n){
+     int size =1;
+    if(n==0){
+        return 0;
+    }
+    int smallcount = count(n/10);
+    return smallcount +1 ;
+ }
