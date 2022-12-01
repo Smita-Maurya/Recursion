@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+using namespace std;
+void helper(string input ,int start , int end ){
+    if(start==end){
+        cout<<input<<endl;
+        return ;
+    }else{
+    for(int i=start; i<=end; i++){
+        swap(input[start],input[i]);
+        helper(input, start+1,end);
+        swap(input[start],input[i]);
+    }
+    }
+    
+}
+
+void printPermutations(string input){
+    //string output[0]="";
+    int start=0;
+    int end = input.size()-1;
+    helper(input ,start , end);
+
+    	/* Don't write main() function.
+	 * Don't read input, it is passed as function argument.
+	 * Print output as specified in the question
+	*/
+}
