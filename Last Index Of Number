@@ -1,0 +1,27 @@
+int lastIndex(int input[], int size, int x) {
+    if(size==0){
+        return -1;
+    }
+    for(int i=size-1;i>=0;i--){
+        if(input[i]==x){
+            return i;
+        }
+    }
+    if(input[0] ==x){
+        return 0;
+    }
+    else{
+       return -1;
+    }
+    
+    int smalllastindex = lastIndex(input +1, size-1, x);
+    return smalllastindex +1;
+    
+    
+  /* Don't write main().
+     Don't read input, it is passed as function argument.
+     Return output and don't print it.
+     Taking input and printing output is handled automatically.
+  */
+
+}
