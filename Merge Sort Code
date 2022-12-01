@@ -1,0 +1,69 @@
+#include<bits/stdc++.h>
+using namespace std;
+void merge(int input[],int start,int end)
+{
+  int mid=(start+end)/2;
+  int n1=mid-start+1;
+  int n2=end-mid;
+  int p1[n1];
+  int p2[n2];
+
+  for(int i=0;i<n1;i++)
+  {
+  	p1[i]=input[start+i];
+  }
+  for(int j=0;j<n2;j++)
+  {
+  	p2[j]=input[mid+1+j];
+  }
+  int i=0;
+  int j=0;
+  int k=start;
+  while(i<n1 && j<n2)
+  {
+     if(p1[i]<=p2[j])
+     {
+     	input[k]=p1[i];
+     	k++;
+     	i++;
+     }
+     else
+     {
+     	input[k]=p2[j];
+     	k++;
+     	j++;
+     }
+ }
+ while(i<n1)
+ {
+ 	input[k]=p1[i];
+ 	k++;
+ 	i++;
+ }
+ while(j<n2)
+ {
+ 	input[k]=p2[j];
+ 	k++;
+ 	j++;
+ }
+
+}
+void helper(int input[],int start,int end)
+{
+	
+	if(start>=end)
+	{
+		return;
+	}
+  int mid=(start+end)/2;
+  helper(input,start,mid);
+  helper(input,mid+1,end);
+  merge(input,start,end);
+
+    
+}
+
+void mergeSort(int input[], int size)
+{
+	helper(input,0,size-1);       
+}
