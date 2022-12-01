@@ -1,0 +1,22 @@
+#include<cstring>
+void replace(char input[],int s){
+     int n=strlen(input);
+	if(s>n){
+        return ;
+    }
+    if(input[s]=='p' && input[s+1]=='i'){
+        for (int i = strlen(input); i >= s + 2; i--) {
+            input[i + 2] = input[i];
+        }
+        input[s]='3';
+        input[s+1]='.';
+        input[s+2]='1';
+        input[s+3]='4';
+        
+        }
+    replace(input,s+1);
+}
+void replacePi(char input[]) {
+   
+    replace(input,0);
+}
