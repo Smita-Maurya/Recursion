@@ -1,0 +1,11 @@
+int multiplyNumbers(int m, int n) {
+    if(n==0){
+        return 0;
+    }
+    if(m==0){
+        return 0;
+    }
+    int smallmultiply = multiplyNumbers(m , n-1) +m;
+    return smallmultiply;
+ }
+
