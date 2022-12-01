@@ -1,0 +1,24 @@
+int helper(int input[], int size , int k, int output[], int idx){
+    if(size==0){
+        if(k==0){
+for(int i=0; i<idx;i++){
+    cout<<output[i]<<" ";
+}cout<<endl;
+            //return 1;
+        }
+        return 1;
+    }
+    int newoutput[idx+1];
+    for(int i=0; i<idx;i++){
+        newoutput[i]=output[i];
+    }
+    newoutput[idx]=input[0];
+    helper(input+1,size-1,k-input[0], newoutput, idx+1);
+    helper(input+1,size-1,k,output,idx);
+}
+void printSubsetSumToK(int input[], int size, int k) {
+    // Write your code here
+    int idx=0;
+    int output[idx];
+    helper(input , size, k , output , idx);
+}
