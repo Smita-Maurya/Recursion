@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+using namespace std;
+string getstring(int d){
+	if(d==2){
+		return "abc";
+	}
+	if(d==3){
+		return "def";
+	}
+	if(d==4){
+		return "ghi";
+	}
+	if(d==5){
+		return "jkl";
+	}
+	if(d==6){
+		return "mno";
+	}
+	if(d==7){
+		return "pqrs";
+	}
+	if(d==8){
+		return "tuv";
+	}
+	if(d==9){
+		return "wxyz";
+	}
+	return " ";
+}
+// function for input string and output string
+void helper(int num,string out)
+{
+    	if(num==0){
+		cout<<out<<endl;
+		return;
+	}
+	int lastdigit=num%10;
+	int smallnumber=num/10;
+	string option=getstring(lastdigit);
+	for(int i=0;i<option.size();i++){
+		helper(smallnumber,option[i]+out);
+	}
+    
+}
+void printKeypad(int num){
+	// base case
+    string out="";
+	helper(num,out);
+}
