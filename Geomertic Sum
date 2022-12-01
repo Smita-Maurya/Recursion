@@ -1,0 +1,8 @@
+double geometricSum(int k) {
+    if(k==0){
+        return 1;
+    }
+    double  smallgsum = geometricSum(k-1);
+    return smallgsum + 1/(double)pow(2,k);
+
+}
